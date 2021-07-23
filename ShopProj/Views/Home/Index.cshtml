@@ -1,0 +1,28 @@
+﻿
+@model IEnumerable<ShopProj.Models.Film>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <a asp-controller="Home" asp-action="Index"  class="btn btn-primary">Без фильтра</a>
+        <a asp-controller="Home" asp-action="Index" asp-route-filter="news" class="btn btn-primary">Новинки</a>
+        <a asp-controller="Home" asp-action="Index" asp-route-filter="popular" class="btn btn-primary">Средний балл</a>
+    </div>
+
+
+<div class="text-center row row-cols-4 mt-5 mb-2">
+
+    @{
+        foreach (var film in Model)
+        {
+            <div class="col text-center row-cols-4 border border-2 mt-2">
+                <div class="card mt-4 m-auto" style="width: 18rem;">
+                    <img class="card-img-top" src="@film.poster" alt="@film.film_name">
+                    <div class="card-body">
+                        <a asp-controller="FilmInformation" asp-action="Film" asp-route-id="@film.Id"><h5 class="card-title">@film.film_name </h5></a>                       
+                        <p class="card-text">@film.shortDesc</p>
+                        <a asp-controller="FilmInformation" asp-action="Film" asp-route-id="@film.Id" class="btn btn-primary">Подробнее</a>
+                    </div>           
+                </div>
+            </div>
+
+        }
+    }
+</div>

@@ -1,0 +1,67 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model ShopProj.Models.Film
+
+
+
+
+<div class="card mb-6" style="max-width: 670px;">
+    <div class="row g-0">
+        <div class="col-md-4">
+           <img style="width:200px; max-width:250px;" src="@Model.poster" alt="@Model.film_name">
+        </div>
+        <div class="col-md-8">
+            <h5 class="card-title">@Model.film_name</h5>
+            <p class="card-text"><span class="alert-dark">Год выпуска:</span> @Model.prod_year</p>
+            <p class="card-text"><span>Время:</span> @Model.film_time</p>
+        </div>
+        <div class="col-md-12">
+            <div class="card-body">
+                <iframe width="560" height="315" src="@Model.trailer" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <p class="card-text"><span> Описание:</span> @Model.longDesc</p>
+                <p class="font-weight-bold">Ваша оценка:@ViewBag.Mark</p>
+                <form asp-action="AddMark" asp-controller="Mark">
+                    <input type="hidden" name="FilmId" value="@Model.Id" />
+                    <select class="form-select" aria-label="Default select example" name="Mark" >
+                        <option selected>Выберите вашу оценку</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                     
+                    </select>
+                    <button class="btn btn-primary" type="submit">Подтвердить!</button>
+                </form>
+
+                <p>Средняя оцкнка пользователей: @ViewBag.MarkAvg</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (User.IsInRole("admin"))
+{
+    <div class="d-flex">
+        <a asp-action="Upsert" asp-controller="Admin" asp-route-id="@Model.Id" class="btn btn-primary btn-sm mr-3">Редактировать</a>
+        <form asp-action="Delete" asp-controller="Admin">
+            <input type="hidden" value="@Model.Id" name="id" />
+            <button type="submit" class="btn btn-danger btn-sm">Удалить</button>
+        </form>
+    </div>
+}
+
+
+
+
+
+

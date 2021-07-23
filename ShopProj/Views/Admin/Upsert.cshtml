@@ -1,0 +1,56 @@
+﻿@model ShopProj.ViewModels.UpsertModel
+
+
+<form asp-action="Upsert" asp-controller="Admin" asp-antiforgery="true" class="mb-2">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div class="form-group">
+            <label asp-for="film_name">Введите название</label><br />
+            <input asp-for="film_name" />
+            <span asp-validation-for="film_name" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="prod_year">Введите год выпуска</label><br />
+            <input asp-for="prod_year" />
+            <span asp-validation-for="prod_year" />
+        </div>
+        <div class="form-group">
+            <label asp-for="shortDesc">Введите короткое описание</label><br />
+            <input asp-for="shortDesc" />
+            <span asp-validation-for="shortDesc" />
+        </div>
+        <div class="form-group">
+            <label asp-for="longDesc">Введите длинное описание</label><br />
+            <input asp-for="longDesc" />
+            <span asp-validation-for="longDesc" />
+        </div>
+        <div class="form-group">
+            <label asp-for="poster">Поместите URL постера</label><br />
+            <input asp-for="poster" />
+            <span asp-validation-for="poster" />
+        </div>
+        <div class="form-group">
+            <label asp-for="trailer">Введите URL трейлера</label><br />
+            <input asp-for="trailer" />
+            <span asp-validation-for="trailer" />
+        </div>
+        <div class="form-group">
+            <label asp-for="film_time">Введите длительность фильма</label><br />
+            <input asp-for="film_time" />
+            <span asp-validation-for="film_time" />
+        </div>
+        <div>
+            <input type="submit" value="Сохранить" class="btn btn-outline-dark" />
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
